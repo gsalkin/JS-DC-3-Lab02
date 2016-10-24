@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="artist single">
+        <img src="{{artist.image}}" alt="" style="float:right;" width="200" height="auto"/>
+        <div class="text-container" style="overflow: hidden;">
+            <h2>{{artist.name}} <span style="text-size: 1em;font-weight: normal;"><a href="./edit">Edit</a></span></h2>
+            <h4>Genres: <span style="text-size: 1em;font-weight: normal;">{{#each artist.genre}}
+                {{this}},
+            {{/each}}</span></h4>
+            <h4>Follow on Spotify</h4>
+            <iframe src="https://embed.spotify.com/follow/1/?uri=spotify:artist:{{artist.id}}&amp;size=detail&amp;theme=light" width="300" height="56" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe>
+        </div>
+    </div>
+</div>

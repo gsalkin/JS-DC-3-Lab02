@@ -1,0 +1,15 @@
+<div class="list">
+    {{#each songs}}
+        <a href='/songs/{{id}}'>
+            <div class="song">
+                <div>
+                    <img src="{{art}}" alt="" width='100' height="auto" />
+                    <div class="text">
+                        <h2 style="display: inline;">{{name}}</h2>
+                        <h3>{{artist}}</h3>
+                    </div>
+                </div>
+            </div>
+        </a>
+    {{/each}}
+</div>

@@ -1,0 +1,15 @@
+<div class="list">
+    {{#each artists}}
+    <a href='/artists/{{name}}'>
+        <div class='artist'>
+            <div>
+                <img src="{{image}}" alt="" width='120' height="auto" />
+                <div class="text">
+                    <h2 style="display: inline;">{{name}}</h2>
+                    <h3 style="text-transform: capitalize;">{{genre.[0]}}</h3>
+                </div>
+            </div>
+        </div>
+    </a>
+    {{/each}}
+</div>
