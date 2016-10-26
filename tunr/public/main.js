@@ -2,7 +2,6 @@ function getArtist() {
     $('#artist-adder').on('submit', function(event) {
         event.preventDefault();
         var artist = $('input[name="artist"]').val();
-
         $.ajax({
             type: 'GET',
             url: buildURL(artist,null),
@@ -35,7 +34,7 @@ function getSong() {
         event.preventDefault();
         var song = $('input[name="song"]').val();
         $.ajax({
-            type: 'Get',
+            type: 'GET',
             url: buildURL(null,song),
             success: function(data){
                 var cleanURL = data.tracks.items[0].href;
@@ -56,16 +55,6 @@ function getSong() {
         });
     });
 }
-
-// function editEntry() {
-//     $('#delete').on('click', function(event) {
-//         event.preventDefault();
-//         $.ajax({
-//             type: 'PUT',
-//             url: jmee,
-//         });
-//     });
-// }
 
 function buildURL(artist,song) {
     var baseURL = 'https://api.spotify.com/v1/search?q=';

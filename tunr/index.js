@@ -6,8 +6,6 @@ var mongoose = require('mongoose');
 var Song = require('./models/schema_song.js');
 var Artist = require('./models/schema_artist.js');
 
-//Utils
-
 // Connect database to application controller
 mongoose.connect('mongodb://localhost:27017/tunr');
 var app = express();
@@ -50,6 +48,18 @@ app.get('/songs/:id', function(req,res) {
     });
 });
 
+app.get('/artists/edit/:id', function(req, res) {
+    Artist.findOne({'name': req.params.id}, function(err, artist) {
+        res.render('artists/edit', artist);
+    });
+});
+
+app.get('/songs/edit/:id', function(req, res) {
+    Song.findById(req.params.id, function(err, song) {
+        res.render('songs/edit', song);
+    });
+});
+
 app.post('/artists', function(req,res){
     var newArtist = new Artist({
         id: req.body.id,
@@ -61,12 +71,6 @@ app.post('/artists', function(req,res){
     newArtist.save();
     res.redirect('/');
 });
-// 
-// app.post('/artists/edit/:id', function(req, res) {
-//     Artist.findOne({'name': req.params.id}, function(err, artist) {
-//
-//     });
-// });
 
 app.post('/songs', function(req,res){
     var newSong = new Song({
@@ -79,6 +83,22 @@ app.post('/songs', function(req,res){
     });
     newSong.save();
     res.redirect('/');
+});
+
+app.post('/artists/edit', function(req,res) {
+    Artist.findById(req.body.id, function(err, artist){
+        artist.desc = req.body.description;
+        artist.save();
+        res.redirect('/artists/' + artist.name);
+    });
+});
+
+app.post('/songs/edit', function(req,res) {
+    Song.findById(req.body.id, function(err, song){
+        song.desc = req.body.description;
+        song.save();
+        res.redirect('/songs/' + song.id);
+    });
 });
 
 app.listen(3000, function() {

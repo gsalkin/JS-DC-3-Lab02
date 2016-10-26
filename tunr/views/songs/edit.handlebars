@@ -1,0 +1,11 @@
+<div class="row">
+    <form class="" action="/songs/edit" method="post">
+        <input type="hidden" name="id" value="{{song._id}}">
+        <div class="song single">
+            <h3>Add a description for {{this.name}}</h3>
+            <textarea type="text" name="description" value="" rows="8" cols="40">{{desc}}</textarea>
+            <br>
+            <input type="submit" name="submit" value="Add description" style="width: 20%;vertical-align:top;">
+        </div>
+    </form>
+</div>
